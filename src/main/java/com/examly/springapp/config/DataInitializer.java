@@ -1,8 +1,6 @@
 package com.examly.springapp.config;
 
-import com.examly.springapp.model.Category;
 import com.examly.springapp.model.Role;
-import com.examly.springapp.repository.CategoryRepository;
 import com.examly.springapp.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,8 +11,7 @@ public class DataInitializer implements CommandLineRunner {
     @Autowired
     private RoleRepository roleRepository;
     
-    @Autowired
-    private CategoryRepository categoryRepository;
+
 
     @Override
     public void run(String... args) throws Exception {
@@ -25,12 +22,6 @@ public class DataInitializer implements CommandLineRunner {
             roleRepository.save(new Role(null, Role.ERole.ROLE_FINANCE_MANAGER));
         }
         
-        if (categoryRepository.count() == 0) {
-            categoryRepository.save(new Category(null, "Food", "Food and dining expenses", null));
-            categoryRepository.save(new Category(null, "Transportation", "Transportation and travel expenses", null));
-            categoryRepository.save(new Category(null, "Entertainment", "Entertainment and leisure expenses", null));
-            categoryRepository.save(new Category(null, "Utilities", "Utility bills and services", null));
-            categoryRepository.save(new Category(null, "Other", "Other miscellaneous expenses", null));
-        }
+        // Categories are user-specific and will be created when users register
     }
 }
