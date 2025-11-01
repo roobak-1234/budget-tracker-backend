@@ -60,7 +60,7 @@ public class WebSecurityConfig {
                 .antMatchers("/api/budget/**").permitAll()
                 .antMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll()
                 .antMatchers("/actuator/**", "/health").permitAll()
-                .antMatchers("/").permitAll()
+                .antMatchers("/", "/favicon.ico").permitAll()
                 .anyRequest().authenticated();
 
         http.authenticationProvider(authenticationProvider());
